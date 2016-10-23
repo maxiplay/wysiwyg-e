@@ -12,7 +12,7 @@
 		<test-fixture id="wysiwyg-e-fixture">
 			<template>
 				<wysiwyg-e value="<p>Hello, world!</p>">
-					<wysiwyg-tool-underline class="wysiwyg-tool"></wysiwyg-tool-underline>
+					<wysiwyg-tool-underline></wysiwyg-tool-underline>
 				</wysiwyg-e>
 			</template>
 		</test-fixture>
@@ -43,7 +43,7 @@
 											assert.equal(wysiwygE.value.replace(new RegExp(' class="style-scope wysiwyg-e"', 'g'), ''), '<p><u>Hello, world!</u></p>');
 											done();
 										},
-										100
+										1000
 									);
 								},
 								100
