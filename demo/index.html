@@ -68,7 +68,10 @@
 				</style>
 				<iron-ajax url="../README.md" handle-as="text" last-response="{{readme}}" auto on-response="_readmeOrValue"></iron-ajax>
 				<paper-material class="fit vertical layout" elevation="5">
-					<wysiwyg-e class="flex" value="{{value}}" id="wysiwygE">
+				
+				<paper-button on-tap="changeLanguage">Change language</paper-button>
+				
+					<wysiwyg-e class="flex" value="{{value}}" id="wysiwygE" language="{{language}}">
 						<wysiwyg-tool-bold></wysiwyg-tool-bold>
 						<wysiwyg-tool-italic></wysiwyg-tool-italic>
 						<wysiwyg-tool-underline></wysiwyg-tool-underline>
@@ -119,6 +122,11 @@
 									},
 									value: {
 										type: String
+									},
+									language : {
+									    
+									    type : String,
+									    value :  "fr"
 									}
 								},
 								// http://phpjs.org/functions/urldecode/
@@ -143,6 +151,18 @@
 								marked: function (string) {
 									return marked(string);
 								},
+								changeLanguage : function () {
+								    
+								    if(this.language == "en"){
+								        
+								        this.language = "fr";
+								        
+								    }else{
+								        
+								        this.language = "en";
+								    }
+								},
+								
 								_readmeOrValue: function () {
 									this.$.wysiwygE.clearHistory();
 									var value, search = document.location.search.substring(1);
